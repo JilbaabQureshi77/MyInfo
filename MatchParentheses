@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+ class MatchParentheses {
+    public static void main(String[] args) {
+        String expr = "((a+b]*{c/d)";  // Changed expression (unbalanced)
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : expr.toCharArray()) {
+            if (ch == '(' || ch == '[' || ch == '{') {
+                stack.push(ch);
+            } else if (ch == ')' || ch == ']' || ch == '}') {
+                if (stack.isEmpty()) {
+                    System.out.println("Expression: " + expr);
+                    System.out.println("Balanced: false");
+                    return;
+                }
+                char open = stack.pop();
+                if (ch == ')' && open != '(' ||
+                        ch == ']' && open != '[' ||
+                        ch == '}' && open != '{') {
+                    System.out.println("Expression: " + expr);
+                    System.out.println("Balanced: false");
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Expression: " + expr);
+        System.out.println("Balanced: " + stack.isEmpty());
+    }
+}
+
+OUTPUT:
+Expression: ((a+b]*{c/d)
+Balanced: false
