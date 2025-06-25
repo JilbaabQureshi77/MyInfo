@@ -1,0 +1,33 @@
+ class ReverseArray {
+    public static void main(String[] args) {
+        int[] a = {11,13,15,17, 19, 21};
+
+        System.out.print("Original: ");
+        show(a);
+
+        reverse(a);
+
+        System.out.print("Reversed: ");
+        show(a);
+    }
+
+    static void reverse(int[] a) {
+        int i = 0, j = a.length - 1;
+        while (i < j) {
+            int t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+            i++;
+            j--;
+        }
+    }
+
+    static void show(int[] a) {
+        for (int n : a) System.out.print(n + " ");
+        System.out.println();
+    }
+}
+
+OUTPUT:
+Original: 11 13 15 17 19 21 
+Reversed: 21 19 17 15 13 11 
